@@ -60,11 +60,11 @@ public class JobPostController {
 
     @PutMapping("{/id}")
     public ResponseEntity<?> updateJob(@PathVariable("id") int id, @RequestBody JobPost update){
-        try {
-            jobService.updateJob(update);
+
+        boolean isUpdated = jobService.updateJob(id,update);
+        if(isUpdated){
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
-        }catch (Exception e){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 }

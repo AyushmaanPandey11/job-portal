@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class JobService {
@@ -32,7 +33,11 @@ public class JobService {
         return repo.findByPostProfileContainingOrPostDescContaining(keyword,keyword);
     }
 
-    public void updateJob( JobPost update) {
-        repo.save(update);
+    public boolean updateJob(int id, JobPost update) {
+        Optional<JobPost> job = repo.findById(id);
+        if(job.isPresent()){
+            repo.save(update);
+            return true;
+        }else return false;
     }
 }
