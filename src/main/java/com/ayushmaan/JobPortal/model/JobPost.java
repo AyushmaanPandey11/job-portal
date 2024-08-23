@@ -1,10 +1,9 @@
 package com.ayushmaan.JobPortal.model;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -16,9 +15,11 @@ import java.util.List;
 @Entity
 public class JobPost {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int postId;
     private String postProfile;
     private String postDesc;
     private int reqExperience;
+    @ElementCollection
     private List<String> postTechStack;
 }

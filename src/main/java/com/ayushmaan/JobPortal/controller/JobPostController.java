@@ -58,7 +58,7 @@ public class JobPostController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("{/id}")
+    @PutMapping("/{id}")
     public ResponseEntity<?> updateJob(@PathVariable("id") int id, @RequestBody JobPost update){
 
         boolean isUpdated = jobService.updateJob(id,update);
