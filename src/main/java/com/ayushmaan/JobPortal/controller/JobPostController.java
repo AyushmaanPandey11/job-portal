@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/job")
+@RequestMapping("/api/v1/job")
 @CrossOrigin(origins = "http://localhost:3000")
 public class JobPostController {
 
