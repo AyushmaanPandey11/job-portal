@@ -1,4 +1,4 @@
-package com.ayushmaan.JobPortal.aspects;
+package com.ayushmaan.JobPortal.aspect;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
