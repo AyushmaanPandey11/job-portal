@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,7 +23,6 @@ public class JobPost{
     private String postDesc;
     private int reqExperience;
     private List<String> postTechStack;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @ManyToMany(mappedBy = "jobsApplied")
+    private List<User> applicants = new ArrayList<>();
 }
