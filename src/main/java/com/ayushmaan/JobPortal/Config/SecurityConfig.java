@@ -40,10 +40,10 @@ public class SecurityConfig {
         return httpSecurity
                 .authorizeHttpRequests(request->
                         request
-                                .anyRequest().authenticated()
                                 .requestMatchers("/api/v1/public").permitAll()
                                 .requestMatchers("/api/v1/job", "/api/v1/user").authenticated()
-                                .requestMatchers("/api/v1/admin").hasRole("ADMIN"))
+                                .requestMatchers("/api/v1/admin").hasRole("ADMIN")
+                                .anyRequest().authenticated())
                 .csrf(AbstractHttpConfigurer::disable)
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
